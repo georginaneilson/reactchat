@@ -1,18 +1,22 @@
 import React from 'react'
-import { resolveComponents } from 'uri-js';
 
 class RoomList extends React.Component {
     render() {
-        console.log(this.props.rooms )
-        return(
+        return (
             <div className="rooms-list" >
+                <h3>Rooms</h3>
+                <ul className="room" >
                 {this.props.rooms.map(room => {
                     return (
-                        <li>
-                            <a href="#">{room.name}</a>
+                        <li key={room.id}>
+                            <a 
+                            onClick={() => this.props.subscribeToRoom(room.id)}
+                                href="#">#{room.name}
+                                </a>
                         </li>
                     )
                 })}
+                </ul>
              </div>
         )
     }
