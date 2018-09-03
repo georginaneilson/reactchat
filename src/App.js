@@ -57,6 +57,9 @@ class App extends Component {
   }
 
     subscribeToRoom(roomId) {
+      this.setState({
+        messages: []
+      })
         this.currentUser.subscribeToRoom({
             roomId: roomId,
             hooks: {
@@ -81,7 +84,7 @@ class App extends Component {
     return (
       <div className="app">
         <RoomList 
-        subscribeToRoom={this.props.subscribeToRoom}
+        subscribeToRoom={this.subscribeToRoom}
         rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]} 
         />
         <MessageList messages={this.state.messages} />
