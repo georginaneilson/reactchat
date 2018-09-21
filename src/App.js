@@ -114,7 +114,7 @@ class App extends Component {
           messages={this.state.messages} />
         <NewRoomForm createRoom={this.createRoom} />
         <SendMessageForm 
-          disabled={this.state.roomId}
+          disabled={!this.state.roomId}
           sendMessage={this.sendMessage} />
       </div>
     );

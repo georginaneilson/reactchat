@@ -6,14 +6,28 @@ import Message from './Message.js'
 class MessageList extends Component {
 
 
+    // scrollToBottom = () => {
+    //     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    // }
 
-    componentDidUpdate() {
-        const node = ReactDom.findDOMNode(this)
-        this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 100 >= node.scrollHeight
-        if (this.shouldScrollToBottom) {
-            node.scrollTop = node.scrollHeight
-        }
-    }
+    // componentDidMount() {
+    //     this.scrollToBottom();
+    // }
+
+    // componentDidUpdate() {
+    //     this.scrollToBottom();
+    // }
+
+
+
+    // componentDidUpdate() {
+    //     console.log('didupdate');
+    //     const node = ReactDom.findDOMNode(this);
+    //     this.shouldScrollToBottom = node.scrollTop + node.clientHeight + 100 >= node.scrollHeight;
+    //     if (this.shouldScrollToBottom) {
+    //         node.scrollTop = node.scrollHeight
+    //     }
+    // }
 
     render() {
 
@@ -28,12 +42,17 @@ class MessageList extends Component {
         }
         else {
             return (
+                <div>
                 <div className="message-list">
                     {this.props.messages.map((message, index) => {
                         return (
                             <Message key={index} username={message.senderId} text={message.text} />
                         )
                     })}
+                </div>
+                <div style={{ float: "left", clear: "both" }}
+                    ref={(el) => { this.messagesEnd = el; }}>
+                </div>
                 </div>
             )
         }
